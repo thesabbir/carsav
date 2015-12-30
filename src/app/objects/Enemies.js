@@ -31,15 +31,15 @@ export default class Enemies extends Phaser.Group {
   }
 
   spawner() {
+    //
     var point = this.game.rnd.integerInRange(0, 3);
     var enemycar = this.create(spawn[point][0], spawn[point][1], 'enemycar');
     enemycar.scored = false;
-    this.scale.x = 0.7;
-    this.scale.y = 0.7;
-    this.anchor.x = 0.7;
-    this.anchor.y = 0.7;
-
-    this.setAll('checkWorldBounds', true);
+    enemycar.scale.x = 0.7;
+    enemycar.scale.y = 0.7;
+    enemycar.anchor.x = 0.7;
+    enemycar.anchor.y = 0.7;
+    enemycar.checkWorldBounds = true
   }
 
 
