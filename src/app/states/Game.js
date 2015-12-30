@@ -19,7 +19,7 @@ export default class Game extends Phaser.State {
 
     this.road = this.add.existing(new Road(this.game, x, y));
     this.player = this.add.existing(new Player(this.game, x, 500));
-    this.enemies = this.add.existing(new Enemies(this.game, 3));
+    this.enemies = this.add.existing(new Enemies(this.game, 4));
     this.camera.follow(this.player);
     this.scoring();
     console.log(this.enemies);
@@ -34,7 +34,7 @@ export default class Game extends Phaser.State {
 
   accident() {
     console.log('Game over');
-    //this.state.start('GameOver');
+    this.state.start('GameOver');
   }
 //score
   scoring() {
