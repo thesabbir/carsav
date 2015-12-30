@@ -9,10 +9,8 @@ export default class ScoreBoard extends Phaser.Text {
     this.score = score;
   }
 
-  // Score Upadtor Method
+  // Score Updater Method
   updateScore(add)  {
-    console.log(this.score);
-    console.log(add);
     this.score += add;
     this.setText(`Total Score:  ${this.score}`);
   }

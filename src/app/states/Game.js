@@ -21,9 +21,9 @@ export default class Game extends Phaser.State {
     //Load objects
     this.road = this.add.existing(new Road(this.game, x, y));
     this.player = this.add.existing(new Player(this.game, x, 500));
-    this.enemies = this.add.existing(new Enemies(this.game, 4));
+    this.enemies = this.add.existing(new Enemies(this.game));
     this.scoreBoard = this.add.existing(new ScoreBoard(this.game, 0));
-    this.camera.follow(this.player);
+    this.game.camera.follow(this.player);
 
   }
 
@@ -34,7 +34,7 @@ export default class Game extends Phaser.State {
       //Checking if this car was already scored
       if (!enemy.scored) {
         //We passed it or not
-        if ((this.player.y - enemy.y) < 5 && (this.player.y - enemy.y) > 0) {
+        if ((this.player.y - enemy.y) < 10 && (this.player.y - enemy.y) > 0) {
           enemy.scored = true;
           //Increase the score
           this.scoreBoard.updateScore(5);
