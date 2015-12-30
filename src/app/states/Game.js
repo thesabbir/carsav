@@ -7,7 +7,7 @@
 
 import Road from '../objects/Road';
 import Player from '../objects/Player';
-import Enemy from '../objects/Enemy';
+import Enemies from '../objects/Enemies';
 
 export default class Game extends Phaser.State {
 
@@ -19,33 +19,32 @@ export default class Game extends Phaser.State {
 
     this.road = this.add.existing(new Road(this.game, x, y));
     this.player = this.add.existing(new Player(this.game, x, 500));
-    this.enemy = this.add.existing(new Enemy(this.game, 50, 0));
+    this.enemies = this.add.existing(new Enemies(this.game, 3));
     this.camera.follow(this.player);
-    this.score = 0;
-    this.scoreText = this.add.text(300, 20, this.score.toString(), {font: '30px', fill: '#fff'});
+    this.scoring();
+    console.log(this.enemies);
 
   }
 
   update() {
-    this.game.physics.arcade.overlap(this.player, this.enemy, this.accident, null, this);
-
-    if (!this.enemy.scored) {
-      if ((this.player.y - this.enemy.y) <= 5 && (this.player.y - this.enemy.y) > 0) {
-        this.scoreIncrease(this);
-      }
-    }
-
+    this.enemies.forEach((enemy) => {
+      this.game.physics.arcade.overlap(this.player, enemy, this.accident, null, this);
+    })
   }
 
   accident() {
     console.log('Game over');
-    this.state.start('GameOver');
+    //this.state.start('GameOver');
+  }
+//score
+  scoring() {
+    this.score = 0;
+    this.scoreText = this.add.text(300, 20, "Total Score: "+ this.score.toString(), {font: '30px', fill: '#fff'});
   }
 
-  scoreIncrease(game) {
-    game.enemy.scored = true;
-    game.score += 5;
-    game.scoreText.setText(game.score.toString());
-    console.log('scored!');
+  scoreIncrease(points) {
+    this.enemy.scored = true;
+    this.score += points;
+    this.scoreText.setText("Total Score: " + this.score.toString());
   }
 }

@@ -10,7 +10,6 @@ export default class Road extends Phaser.Image {
   constructor(game, x, y) {
     super(game, x, y, 'road');
     this.anchor.set(0.5);
-
   }
 
   update() {

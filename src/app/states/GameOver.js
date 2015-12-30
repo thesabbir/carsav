@@ -8,11 +8,11 @@
 export default class GameOver extends Phaser.State {
 
   create () {
-    //this.stage.backgroundColor = 0x333333;
-    let style = { font: "bold 32px Arial", fill: "#fff", boundsAlignH: "center", boundsAlignV: "middle" };
+    this.stage.backgroundColor = '#fff';
+    let style = { font: "bold 20px Arial", fill: "#000", boundsAlignH: "center", boundsAlignV: "middle" };
 
-    this.text = this.add.text(0, 20, "Game Over! Press space bar to retry!!", style);
-    this.text.setShadow(3, 3, 'rgba(0,0,0,0.5)', 2);
+    this.text = this.add.text(this.world.centerX, this.world.centerY, "Game Over!", style);
+    this.continue = this.add.text(100, 600, "Press spacebar to continue!", style);
   }
 
   update() {
