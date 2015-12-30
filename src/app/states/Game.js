@@ -7,6 +7,7 @@
 
 import Road from '../objects/Road';
 import Player from '../objects/Player';
+import Enemy from '../objects/Enemy';
 
 export default class Game extends Phaser.State {
 
@@ -18,6 +19,8 @@ export default class Game extends Phaser.State {
 
     this.road = this.add.existing(new Road(this.game, x, y));
     this.player = this.add.existing(new Player(this.game, x, y + 100));
+    this.enemy = this.add.existing(new Enemy(this.game, 20, 3));
+    this.camera.follow(this.player);
 
   }
 

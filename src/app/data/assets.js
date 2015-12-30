@@ -41,6 +41,10 @@ export default {
     {
       key: 'player',
       type: 'image'
+    },
+    {
+      key: 'enemycar',
+      type: 'image'
     }
 
     // Example: adding a background music.

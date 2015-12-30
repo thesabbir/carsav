@@ -33,10 +33,5 @@ export default class Player extends Phaser.Sprite {
     else if (this.cursors.down.isDown) {
       this.y += 5;
     }
-
-    if(this.game.input.keyboard.isDown(Phaser.Keyboard.SPACEBAR)) {
-      console.log('space');
-      this.y = -10;
-    }
   }
 }
