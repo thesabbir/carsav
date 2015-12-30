@@ -13,25 +13,33 @@ export default class Player extends Phaser.Sprite {
     this.game.physics.enable(this, Phaser.Physics.ARCADE);
     this.body.collideWorldBounds = true;
     this.cursors = game.input.keyboard.createCursorKeys();
+    this.speed = 5;
+    this.spacekey = this.game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    this.spacekey.onDown.add(this.dodge,this);
 
   }
 
   update() {
 
     if (this.cursors.left.isDown) {
-      this.x -= 5;
+      this.x -= this.speed;
 
     }
 
     else if (this.cursors.right.isDown) {
-      this.x += 5;
+      this.x += this.speed;
     }
 
     if (this.cursors.up.isDown) {
-      this.y -= 5;
+      this.y -= this.speed;
     }
     else if (this.cursors.down.isDown) {
-      this.y += 5;
+      this.y += this.speed;
     }
+
+  }
+
+  dodge() {
+    this.y -= 500;
   }
 }
