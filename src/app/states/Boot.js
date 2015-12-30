@@ -19,7 +19,7 @@ export default class Boot extends Phaser.State {
 
     // Initialize physics engines here. Phaser builds including Arcade Physics
     // enable it by default.
-    this.physics.startSystem(Phaser.Physics.P2JS);
+    //this.physics.startSystem(Phaser.Physics.P2JS);
 
     // Adjust how many pointers Phaser will check for input events.
     this.input.maxPointers = 2;

@@ -14,7 +14,7 @@ export default class Road extends Phaser.Image {
   }
 
   update() {
-    this.y += 10;
+    this.y += 3;
     if (this.y > 640) {
       this.y = 0;
     }
