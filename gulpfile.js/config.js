@@ -66,7 +66,7 @@ module.exports = {
       }
     },
     ghostMode: false,
-    notify: false
+    notify: true
   }
 
 };

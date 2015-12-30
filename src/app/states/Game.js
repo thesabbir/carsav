@@ -5,26 +5,24 @@
  * A sample Game state, displaying the Phaser logo.
  */
 
+import Road from '../objects/Road';
+import Player from '../objects/Player';
 
 export default class Game extends Phaser.State {
 
-  create () {
+  create() {
     const { centerX: x, centerY: y } = this.world;
 
-    this.road = this.add.image(x, y, 'road');
-    this.road.anchor.set(0.5);
+    this.game.world.setBounds(0, 0, 480, 640);
+    this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-    this.player = this.add.image(x, y, 'player');
-    this.player.anchor.set(0);
+    this.road = this.add.existing(new Road(this.game, x, y));
+    this.player = this.add.existing(new Player(this.game, x, y + 100));
 
   }
 
-  update () {
-    this.road.y += 10;
-    if(this.road.y > 640) {
-      this.road.y = 0;
-    }
-    console.log(this.road.y);
+  update() {
+
   }
 
 }
