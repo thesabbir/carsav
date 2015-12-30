@@ -16,6 +16,10 @@ export default class Enemies extends Phaser.Group {
     this.enableBody = true;
     this.number = number;
     this.spawner(3000, this);
+    this.scored = true;
+    this.game.time.events.loop(Phaser.Timer.SECOND * 2, this.spawner, this).timer.start();
+
+
   }
 
   update() {
@@ -26,27 +30,20 @@ export default class Enemies extends Phaser.Group {
 
   }
 
+  spawner() {
+    var point = this.game.rnd.integerInRange(0, 3);
+    var enemycar = this.create(spawn[point][0], spawn[point][1], 'enemycar');
+    enemycar.scored = false;
+    this.scale.x = 0.7;
+    this.scale.y = 0.7;
+    this.anchor.x = 0.7;
+    this.anchor.y = 0.7;
 
-  spawner(delay, self) {
-    var point = self.game.rnd.integerInRange(0,3);
-    console.log(point);
-    console.log(spawn[point][0]);
-    console.log(spawn[point][1]);
-    this.game.time.events.add(delay, () => {
-      self.create(spawn[point][0], spawn[point][1], 'enemycar');
-      this.setAll('anchor.x', 0.5);
-      this.setAll('anchor.y', 0.5);
-      this.setAll('scale.x', 0.7);
-      this.setAll('scale.y', 0.7);
-      this.setAll('checkWorldBounds', true);
-      this.setAll('scoredOrNot', false);
-      this.spawner(delay, self);
-    });
+    this.setAll('checkWorldBounds', true);
   }
 
 
   carReset(enemy) {
-    console.log('out');
     enemy.destroy();
   }
 }
